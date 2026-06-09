@@ -1,1 +1,49 @@
-Este projeto consiste em uma calculadora em Python executada no terminal, desenvolvida com o objetivo de praticar conceitos básicos da linguagem, como entrada e saída de dados, estruturas condicionais (if/elif/else) e uso da biblioteca padrão math. O programa apresenta um menu interativo com 20 operações matemáticas, incluindo soma, subtração, multiplicação, divisão (com verificação de divisão por zero), potência, raiz quadrada, resto, porcentagem, valor absoluto, fatorial, comparação entre números, média, dobro, triplo, quadrado, cubo, inverso e verificação se um número é par ou ímpar. Após escolher a opção desejada, o usuário informa os valores necessários e o resultado é exibido diretamente no console. O código também trata erros simples, como números negativos em operações indevidas e opções inválidas no menu. Para executar o projeto, basta ter o Python 3 instalado e rodar o arquivo untitled4.py. Trata-se de um projeto simples, ideal para iniciantes, que pode ser facilmente expandido com melhorias como uso de funções, loops para execução contínua, interface gráfica ou testes automatizados.
+# Calculadora Python
+
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
+
+Calculadora interativa executada no terminal, desenvolvida como trabalho de faculdade para praticar conceitos basicos de Python: entrada/saida de dados, estruturas condicionais e uso da biblioteca `math`.
+
+## Funcionalidades
+
+O programa apresenta um menu com 20 operacoes matematicas:
+
+| # | Operacao | # | Operacao |
+|---|----------|---|----------|
+| 1 | Soma | 11 | Maior numero |
+| 2 | Subtracao | 12 | Menor numero |
+| 3 | Multiplicacao | 13 | Media |
+| 4 | Divisao | 14 | Dobro |
+| 5 | Potencia | 15 | Triplo |
+| 6 | Raiz quadrada | 16 | Quadrado |
+| 7 | Resto | 17 | Cubo |
+| 8 | Porcentagem | 18 | Inverso |
+| 9 | Valor absoluto | 19 | Par ou impar |
+| 10 | Fatorial | 20 | Comparar numeros |
+
+## Como executar
+
+1. Certifique-se de ter o [Python 3](https://www.python.org/downloads/) instalado.
+2. Clone o repositorio:
+   ```bash
+   git clone https://github.com/LuisGuilherme605/Trabalho-faculdade-calculadora.git
+   cd Trabalho-faculdade-calculadora
+   ```
+3. Execute a calculadora:
+   ```bash
+   python calculadora.py
+   ```
+
+## Estrutura do projeto
+
+```
+Trabalho-faculdade-calculadora/
+├── calculadora.py   # Codigo principal da calculadora
+├── .gitignore       # Arquivos ignorados pelo Git
+└── README.md        # Documentacao do projeto
+```
+
+## Tecnologias
+
+- **Python 3** - Linguagem de programacao
+- **math** - Biblioteca padrao do Python para operacoes matematicas
