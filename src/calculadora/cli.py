@@ -1,19 +1,7 @@
-"""Interface de linha de comando da calculadora.
-
-Responsável por toda a interação com o usuário: exibição do menu, leitura
-e validação das entradas e apresentação dos resultados. A lógica matemática
-fica isolada no módulo :mod:`calculadora.operacoes`.
-"""
-
-from __future__ import annotations
-
-from collections.abc import Callable
-
 from calculadora import operacoes
 
 
-def ler_float(prompt: str) -> float:
-    """Lê um número decimal do usuário, repetindo até a entrada ser válida."""
+def ler_float(prompt):
     while True:
         try:
             return float(input(prompt).replace(",", "."))
@@ -21,8 +9,7 @@ def ler_float(prompt: str) -> float:
             print("Entrada inválida. Digite um número.")
 
 
-def ler_int(prompt: str) -> int:
-    """Lê um número inteiro do usuário, repetindo até a entrada ser válida."""
+def ler_int(prompt):
     while True:
         try:
             return int(input(prompt))
@@ -30,20 +17,18 @@ def ler_int(prompt: str) -> int:
             print("Entrada inválida. Digite um número inteiro.")
 
 
-def _binaria(funcao: Callable[[float, float], float], unidade: str = "") -> None:
-    """Executa uma operação que recebe dois números decimais."""
+def _binaria(funcao, unidade=""):
     a = ler_float("Número 1: ")
     b = ler_float("Número 2: ")
     print(f"Resultado: {funcao(a, b)}{unidade}")
 
 
-def _unaria(funcao: Callable[[float], float]) -> None:
-    """Executa uma operação que recebe um único número decimal."""
+def _unaria(funcao):
     x = ler_float("Número: ")
     print(f"Resultado: {funcao(x)}")
 
 
-def _divisao() -> None:
+def _divisao():
     a = ler_float("Número 1: ")
     b = ler_float("Número 2: ")
     try:
@@ -52,7 +37,7 @@ def _divisao() -> None:
         print("Erro: não é possível dividir por zero.")
 
 
-def _resto() -> None:
+def _resto():
     a = ler_float("Número 1: ")
     b = ler_float("Número 2: ")
     try:
@@ -61,7 +46,7 @@ def _resto() -> None:
         print("Erro: não é possível dividir por zero.")
 
 
-def _raiz_quadrada() -> None:
+def _raiz_quadrada():
     x = ler_float("Número: ")
     try:
         print(f"Resultado: {operacoes.raiz_quadrada(x)}")
@@ -69,7 +54,7 @@ def _raiz_quadrada() -> None:
         print(f"Erro: {erro}.")
 
 
-def _inverso() -> None:
+def _inverso():
     x = ler_float("Número: ")
     try:
         print(f"Resultado: {operacoes.inverso(x)}")
@@ -77,7 +62,7 @@ def _inverso() -> None:
         print("Erro: não existe inverso de zero.")
 
 
-def _fatorial() -> None:
+def _fatorial():
     n = ler_int("Número: ")
     try:
         print(f"Resultado: {operacoes.fatorial(n)}")
@@ -85,12 +70,12 @@ def _fatorial() -> None:
         print(f"Erro: {erro}.")
 
 
-def _par_ou_impar() -> None:
+def _par_ou_impar():
     n = ler_int("Número: ")
     print("Par" if operacoes.eh_par(n) else "Ímpar")
 
 
-def _comparar() -> None:
+def _comparar():
     a = ler_float("Número 1: ")
     b = ler_float("Número 2: ")
     resultado = operacoes.comparar(a, b)
@@ -102,8 +87,8 @@ def _comparar() -> None:
         print("Os números são iguais.")
 
 
-# Cada item do menu: (rótulo, ação a executar).
-MENU: dict[int, tuple[str, Callable[[], None]]] = {
+# cada opção do menu: (nome, função que executa)
+MENU = {
     1: ("Soma", lambda: _binaria(operacoes.soma)),
     2: ("Subtração", lambda: _binaria(operacoes.subtracao)),
     3: ("Multiplicação", lambda: _binaria(operacoes.multiplicacao)),
@@ -127,8 +112,7 @@ MENU: dict[int, tuple[str, Callable[[], None]]] = {
 }
 
 
-def exibir_menu() -> None:
-    """Imprime o menu de operações disponíveis."""
+def exibir_menu():
     print("\n=== Calculadora ===")
     metade = (len(MENU) + 1) // 2
     for i in range(1, metade + 1):
@@ -142,8 +126,7 @@ def exibir_menu() -> None:
     print(" 0 - Sair")
 
 
-def executar() -> None:
-    """Laço principal interativo da calculadora."""
+def executar():
     while True:
         exibir_menu()
         try:
@@ -165,8 +148,7 @@ def executar() -> None:
         acao()
 
 
-def main() -> None:
-    """Ponto de entrada que trata interrupção pelo teclado."""
+def main():
     try:
         executar()
     except (KeyboardInterrupt, EOFError):
